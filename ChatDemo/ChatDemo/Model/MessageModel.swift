@@ -17,7 +17,7 @@ enum MessageType {
 enum MessageStatus {
     case SENDING
     case SENT
-    case RECEIVED
+    case DELIVERED
     case READ
 }
 

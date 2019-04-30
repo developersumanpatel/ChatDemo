@@ -23,8 +23,8 @@ class ChatPresenter {
             case .SENDING:
                 newMessageStatus = .SENT
             case .SENT:
-                newMessageStatus = .RECEIVED
-            case .RECEIVED:
+                newMessageStatus = .DELIVERED
+            case .DELIVERED:
                 newMessageStatus = .READ
             case .READ:
                 newMessageStatus = .SENT

@@ -33,7 +33,7 @@ class TextSenderCell: UITableViewCell {
             switch status {
             case .SENT:
                 statusImageName = "single-tick"
-            case .RECEIVED:
+            case .DELIVERED:
                 statusImageName = "double-tick"
             case .READ:
                 statusImageName = "double-blue-tick"

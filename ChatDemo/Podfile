@@ -6,5 +6,4 @@ target 'ChatDemo' do
   use_frameworks!
 
   # Pods for ChatDemo
-  pod 'IQKeyboardManagerSwift'
 end
