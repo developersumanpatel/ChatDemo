@@ -19,7 +19,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ugD-ty-zSG">
-                        <rect key="frame" x="8" y="8" width="209" height="60.5"/>
+                        <rect key="frame" x="8" y="8" width="207" height="60.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Hello, good morning !!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kXG-SP-ta1">
                                 <rect key="frame" x="8" y="8" width="139" height="22"/>
@@ -28,7 +28,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="7:00 pm" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="et8-AX-yKF">
-                                <rect key="frame" x="157" y="38" width="44" height="14.5"/>
+                                <rect key="frame" x="155" y="38" width="44" height="14.5"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="12"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -36,7 +36,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.92549019610000005" green="0.8980392157" blue="0.86666666670000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="et8-AX-yKF" firstAttribute="leading" secondItem="kXG-SP-ta1" secondAttribute="trailing" constant="10" id="37j-HT-jXV"/>
+                            <constraint firstItem="et8-AX-yKF" firstAttribute="leading" secondItem="kXG-SP-ta1" secondAttribute="trailing" constant="8" id="37j-HT-jXV"/>
                             <constraint firstAttribute="bottom" secondItem="et8-AX-yKF" secondAttribute="bottom" constant="8" id="PVW-aA-e7N"/>
                             <constraint firstItem="et8-AX-yKF" firstAttribute="top" secondItem="kXG-SP-ta1" secondAttribute="bottom" constant="8" id="QEw-nH-C3b"/>
                             <constraint firstAttribute="trailing" secondItem="et8-AX-yKF" secondAttribute="trailing" constant="8" id="Qax-Ag-BWQ"/>

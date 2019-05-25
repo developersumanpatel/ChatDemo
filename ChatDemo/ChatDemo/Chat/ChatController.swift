@@ -15,7 +15,7 @@ class ChatController: UIViewController {
     @IBOutlet weak var messageTextView: UITextView!
     @IBOutlet weak var tableView: UITableView!
     
-    lazy var presenter = ChatPresenter()
+    lazy var presenter = ChatPresenter(delegate: self)
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -24,11 +24,13 @@ class ChatController: UIViewController {
     func setupUI() {
         tableView.estimatedRowHeight = 75.0
         tableView.tableFooterView = UIView()
-        tableView.register(UINib(nibName: "TextReceiverCell", bundle: nil), forCellReuseIdentifier: "TextReceiverCell")
-        tableView.register(UINib(nibName: "TextSenderCell", bundle: nil), forCellReuseIdentifier: "TextSenderCell")
+        tableView.register(cellType: TextReceiverCell.self)
+        tableView.register(cellType: TextSenderCell.self)
+        tableView.register(cellType: ImageReceiverCell.self)
+        tableView.register(cellType: ImageSenderCell.self)
         tableView.keyboardDismissMode = .onDrag
         
-        messageTextView.layer.cornerRadius = 17.0
+        messageTextView.layer.cornerRadius = 18.0
         messageTextView.clipsToBounds = true
         
         sendButtonEnable(enable: false)
@@ -82,12 +84,13 @@ class ChatController: UIViewController {
     }
     
     @IBAction func plusClicked(_ sender: UIButton) {
-        // TODO: Capture photo
+        showAttachmentActionSheet()
     }
     
     @IBAction func sendClicked(_ sender: UIButton) {
         if let messageText = messageTextView.text, messageText.trim().count > 0 {
-            presenter.prepareMessage(withText: messageText.trim())
+            let textMessage = MessageModel(message: messageText.trim(), messageType: .TEXT)
+            presenter.prepareMessage(textMessage)
             messageTextView.text = ""
             tableView.reloadData()
             scrollToLatestMessage()
@@ -113,20 +116,32 @@ extension ChatController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let message = presenter.messages[indexPath.row]
-        if message.messageType == .TEXT {
-            if let sender = message.isSender, sender == false {
-                if let cell = tableView.dequeueReusableCell(withIdentifier: "TextReceiverCell") as? TextReceiverCell {
+        if let messagwType = message.messageType {
+            switch messagwType {
+            case .TEXT:
+                if let sender = message.isSender, sender == false {
+                    let cell = tableView.dequeueReusableCell(with: TextReceiverCell.self, for: indexPath)
+                    cell.configureCell(message: message)
+                    return cell
+                } else {
+                    let cell = tableView.dequeueReusableCell(with: TextSenderCell.self, for: indexPath)
                     cell.configureCell(message: message)
                     return cell
                 }
-            } else {
-                if let cell = tableView.dequeueReusableCell(withIdentifier: "TextSenderCell") as? TextSenderCell {
+            case .IMAGE:
+                if let sender = message.isSender, sender == false {
+                    let cell = tableView.dequeueReusableCell(with: ImageReceiverCell.self, for: indexPath)
+                    cell.configureCell(message: message)
+                    return cell
+                } else {
+                    let cell = tableView.dequeueReusableCell(with: ImageSenderCell.self, for: indexPath)
                     cell.configureCell(message: message)
                     return cell
                 }
+            default:
+                return UITableViewCell()
             }
         }
-    
         return UITableViewCell()
     }
 }
@@ -138,3 +153,76 @@ extension ChatController: UITextViewDelegate {
         return true
     }
 }
+
+extension ChatController: ChatDelegate {
+    func openCamera() {
+        if UIImagePickerController.isSourceTypeAvailable(.camera){
+            let myPickerController = UIImagePickerController()
+            myPickerController.delegate = self
+            myPickerController.sourceType = .camera
+            self.present(myPickerController, animated: true, completion: nil)
+        }
+    }
+    
+    func openPhotoLibrary() {
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
+            let myPickerController = UIImagePickerController()
+            myPickerController.delegate = self
+            myPickerController.sourceType = .photoLibrary
+//            myPickerController.mediaTypes = [kUTTypeMovie as String, kUTTypeVideo as String]
+            self.present(myPickerController, animated: true, completion: nil)
+        }
+    }
+    
+    func askForPermission(_ permission: String) {
+        // show alert
+    }
+    
+}
+
+extension ChatController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        // IMAGE
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            let imageMessage = MessageModel(image: image, messageType: .IMAGE)
+            presenter.prepareMessage(imageMessage)
+            messageTextView.text = ""
+            tableView.reloadData()
+            scrollToLatestMessage()
+            sendButtonEnable(enable: false)
+        } else {
+            debugPrint("Something went wrong in image")
+        }
+        // VIDEO
+        if let videoUrl = info[UIImagePickerControllerMediaURL] as? NSURL{
+            debugPrint("videourl: ", videoUrl)
+            //trying compression of video
+            let data = NSData(contentsOf: videoUrl as URL)!
+            debugPrint("File size before compression: \(Double(data.length / 1048576)) mb")
+        }
+        else{
+            debugPrint("Something went wrong in  video")
+        }
+        
+        self.dismiss(animated: true, completion: nil)
+    }
+}
+
+extension ChatController {
+    func showAttachmentActionSheet() {
+        let actionSheet = UIAlertController(title: AccessPermission.heading, message: AccessPermission.description, preferredStyle: .actionSheet)
+        
+        actionSheet.addAction(UIAlertAction(title: AccessPermission.camera, style: .default, handler: { (action) -> Void in
+            self.presenter.authorisationStatus(attachmentTypeEnum: .camera)
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: AccessPermission.photoLibrary, style: .default, handler: { (action) -> Void in
+            self.presenter.authorisationStatus(attachmentTypeEnum: .photoLibrary)
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: General.cancel, style: .cancel, handler: nil))
+        
+        self.present(actionSheet, animated: true, completion: nil)
+    }
+}
+

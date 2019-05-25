@@ -18,6 +18,12 @@
 		70B00E422273666C00A89085 /* TextSenderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70B00E402273666C00A89085 /* TextSenderCell.xib */; };
 		70B00E44227369BD00A89085 /* ChatPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B00E43227369BD00A89085 /* ChatPresenter.swift */; };
 		70B00E4722736A3B00A89085 /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B00E4622736A3B00A89085 /* MessageModel.swift */; };
+		70D0374C229907AB0037C708 /* ImageReceiverCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D0374A229907AB0037C708 /* ImageReceiverCell.swift */; };
+		70D0374D229907AB0037C708 /* ImageReceiverCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70D0374B229907AB0037C708 /* ImageReceiverCell.xib */; };
+		70D03750229907C10037C708 /* ImageSenderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D0374E229907C10037C708 /* ImageSenderCell.swift */; };
+		70D03751229907C10037C708 /* ImageSenderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70D0374F229907C10037C708 /* ImageSenderCell.xib */; };
+		70D0375322991BA30037C708 /* ChatDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D0375222991BA30037C708 /* ChatDelegate.swift */; };
+		70D03756229922730037C708 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D03755229922730037C708 /* Constants.swift */; };
 		70D1E40A227469B2005ED8A1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D1E409227469B2005ED8A1 /* Extensions.swift */; };
 		A4F6F8FD30648DEAB7BD7F9D /* Pods_ChatDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C74F2A3384F1E4123A05C6A8 /* Pods_ChatDemo.framework */; };
 /* End PBXBuildFile section */
@@ -37,6 +43,12 @@
 		70B00E402273666C00A89085 /* TextSenderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextSenderCell.xib; sourceTree = "<group>"; };
 		70B00E43227369BD00A89085 /* ChatPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatPresenter.swift; sourceTree = "<group>"; };
 		70B00E4622736A3B00A89085 /* MessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
+		70D0374A229907AB0037C708 /* ImageReceiverCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageReceiverCell.swift; sourceTree = "<group>"; };
+		70D0374B229907AB0037C708 /* ImageReceiverCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageReceiverCell.xib; sourceTree = "<group>"; };
+		70D0374E229907C10037C708 /* ImageSenderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSenderCell.swift; sourceTree = "<group>"; };
+		70D0374F229907C10037C708 /* ImageSenderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageSenderCell.xib; sourceTree = "<group>"; };
+		70D0375222991BA30037C708 /* ChatDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDelegate.swift; sourceTree = "<group>"; };
+		70D03755229922730037C708 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		70D1E409227469B2005ED8A1 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		C74F2A3384F1E4123A05C6A8 /* Pods_ChatDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChatDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB49B4A752346D960E089B3B /* Pods-ChatDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ChatDemo/Pods-ChatDemo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -75,6 +87,7 @@
 		70B00E262273623000A89085 /* ChatDemo */ = {
 			isa = PBXGroup;
 			children = (
+				70D03754229922590037C708 /* Constants */,
 				70D1E40B227469C0005ED8A1 /* Extensions */,
 				70B00E4522736A0D00A89085 /* Model */,
 				70B00E392273628D00A89085 /* Chat */,
@@ -93,6 +106,7 @@
 				70B00E3A2273629800A89085 /* Cell */,
 				70B00E292273623000A89085 /* ChatController.swift */,
 				70B00E43227369BD00A89085 /* ChatPresenter.swift */,
+				70D0375222991BA30037C708 /* ChatDelegate.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -100,10 +114,8 @@
 		70B00E3A2273629800A89085 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				70B00E3B227362C900A89085 /* TextReceiverCell.swift */,
-				70B00E3C227362C900A89085 /* TextReceiverCell.xib */,
-				70B00E3F2273666C00A89085 /* TextSenderCell.swift */,
-				70B00E402273666C00A89085 /* TextSenderCell.xib */,
+				70D037492298F58E0037C708 /* Image */,
+				70D037482298F57E0037C708 /* Text */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -114,6 +126,36 @@
 				70B00E4622736A3B00A89085 /* MessageModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		70D037482298F57E0037C708 /* Text */ = {
+			isa = PBXGroup;
+			children = (
+				70B00E3B227362C900A89085 /* TextReceiverCell.swift */,
+				70B00E3C227362C900A89085 /* TextReceiverCell.xib */,
+				70B00E3F2273666C00A89085 /* TextSenderCell.swift */,
+				70B00E402273666C00A89085 /* TextSenderCell.xib */,
+			);
+			path = Text;
+			sourceTree = "<group>";
+		};
+		70D037492298F58E0037C708 /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				70D0374A229907AB0037C708 /* ImageReceiverCell.swift */,
+				70D0374B229907AB0037C708 /* ImageReceiverCell.xib */,
+				70D0374E229907C10037C708 /* ImageSenderCell.swift */,
+				70D0374F229907C10037C708 /* ImageSenderCell.xib */,
+			);
+			path = Image;
+			sourceTree = "<group>";
+		};
+		70D03754229922590037C708 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				70D03755229922730037C708 /* Constants.swift */,
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 		70D1E40B227469C0005ED8A1 /* Extensions */ = {
@@ -203,6 +245,8 @@
 			files = (
 				70B00E322273623000A89085 /* LaunchScreen.storyboard in Resources */,
 				70B00E422273666C00A89085 /* TextSenderCell.xib in Resources */,
+				70D03751229907C10037C708 /* ImageSenderCell.xib in Resources */,
+				70D0374D229907AB0037C708 /* ImageReceiverCell.xib in Resources */,
 				70B00E2F2273623000A89085 /* Assets.xcassets in Resources */,
 				70B00E3E227362C900A89085 /* TextReceiverCell.xib in Resources */,
 				70B00E2D2273623000A89085 /* Main.storyboard in Resources */,
@@ -238,7 +282,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				70B00E3D227362C900A89085 /* TextReceiverCell.swift in Sources */,
+				70D03756229922730037C708 /* Constants.swift in Sources */,
 				70B00E4722736A3B00A89085 /* MessageModel.swift in Sources */,
+				70D03750229907C10037C708 /* ImageSenderCell.swift in Sources */,
+				70D0374C229907AB0037C708 /* ImageReceiverCell.swift in Sources */,
+				70D0375322991BA30037C708 /* ChatDelegate.swift in Sources */,
 				70D1E40A227469B2005ED8A1 /* Extensions.swift in Sources */,
 				70B00E2A2273623000A89085 /* ChatController.swift in Sources */,
 				70B00E412273666C00A89085 /* TextSenderCell.swift in Sources */,
