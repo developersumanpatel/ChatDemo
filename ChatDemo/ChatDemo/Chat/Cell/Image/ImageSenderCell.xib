@@ -19,7 +19,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q5T-A1-cId">
-                        <rect key="frame" x="120" y="0.0" width="200" height="200.5"/>
+                        <rect key="frame" x="112" y="0.0" width="200" height="200.5"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sender-image" translatesAutoresizingMaskIntoConstraints="NO" id="ZEf-wC-koL">
                                 <rect key="frame" x="8" y="8.5" width="184" height="184"/>
@@ -60,7 +60,7 @@
                 <constraints>
                     <constraint firstItem="q5T-A1-cId" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="2Lt-lw-bDd"/>
                     <constraint firstAttribute="bottom" secondItem="q5T-A1-cId" secondAttribute="bottom" id="Fle-53-Lbh"/>
-                    <constraint firstAttribute="trailing" secondItem="q5T-A1-cId" secondAttribute="trailing" id="yaf-nn-LmU"/>
+                    <constraint firstAttribute="trailing" secondItem="q5T-A1-cId" secondAttribute="trailing" constant="8" id="yaf-nn-LmU"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
