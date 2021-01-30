@@ -165,12 +165,14 @@ extension ChatController: ChatDelegate {
     }
     
     func openPhotoLibrary() {
-        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
-            let myPickerController = UIImagePickerController()
-            myPickerController.delegate = self
-            myPickerController.sourceType = .photoLibrary
-//            myPickerController.mediaTypes = [kUTTypeMovie as String, kUTTypeVideo as String]
-            self.present(myPickerController, animated: true, completion: nil)
+        DispatchQueue.main.async {
+            if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
+                let myPickerController = UIImagePickerController()
+                myPickerController.delegate = self
+                myPickerController.sourceType = .photoLibrary
+//                myPickerController.mediaTypes = [kUTTypeMovie as String, kUTTypeVideo as String]
+                self.present(myPickerController, animated: true, completion: nil)
+            }
         }
     }
     
